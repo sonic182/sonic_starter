@@ -1,5 +1,6 @@
 pylint
 pytest
+pytest-sugar
 autopep8
 flake8
 flake8-docstrings
