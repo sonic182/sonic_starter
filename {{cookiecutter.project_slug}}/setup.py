@@ -15,6 +15,7 @@ setup(
     author='Johanderson Mogollon',
     author_email='johanderson@mogollon.com.ve',
     license='MIT',
+    packages=['{{cookiecutter.project_slug}}'],
     setup_requires=['pytest-runner'],
     test_requires=['pytest'],
     install_requires=REQS,
