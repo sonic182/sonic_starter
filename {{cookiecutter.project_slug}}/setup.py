@@ -1,20 +1,16 @@
 """Setup module."""
 
-import re
 from setuptools import setup
-
-RGX = re.compile('(\w+==[\d.]+)')
-
-
-def read_file(filename):
-    """Read file correctly."""
-    with open(filename) as _file:
-        return _file.read().strip()
+try:
+    from pip._internal.req import parse_requirements
+except ImportError:
+    from pip.req import parse_requirements
 
 
-def parse_requirements(filename):
-    """Parse requirements from file."""
-    return re.findall(RGX, read_file(filename)) or []
+def requirements(filename):
+    """Parse requirements from requirements.txt."""
+    reqs = parse_requirements(filename, session=False)
+    return [str(req.req) for req in reqs]
 
 
 setup(
@@ -27,10 +23,15 @@ setup(
     packages=['{{cookiecutter.project_slug}}'],
     setup_requires=['pytest-runner'],
     test_requires=['pytest'],
-    install_requires=parse_requirements('requirements.txt'),
+    install_requires=requirements('requirements.txt'),
     extras_require={
-        'dev': parse_requirements('dev-requirements.txt'),
-        'test': parse_requirements(
-            'dev-requirements.txt') + ['coverage', 'coveralls']
+        'dev': requirements('dev-requirements.txt'),
+        'test': [
+            'pytest',
+            'pytest-cov',
+            'pytest-sugar',
+            'coverage',
+            'coveralls'
+        ]
     }
 )
