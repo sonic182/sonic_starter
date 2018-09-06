@@ -5,7 +5,7 @@ My cookiecutter to start new projects.
 
 # Requirements
 
-* (Python cookiecutter)[https://cookiecutter.readthedocs.io/en/latest/installation.html]
+* [Python cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html)
 
 # Usage
 
