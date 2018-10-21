@@ -13,3 +13,10 @@ htmlcov/
 .tox
 *.pyc
 .pytest_cache/
+
+
+logs/*.log*
+.idea/
+.vscode/
+*.txt
+*.csv
