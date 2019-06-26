@@ -1,5 +1,6 @@
 """Setup module."""
 
+import re
 from setuptools import setup
 
 
