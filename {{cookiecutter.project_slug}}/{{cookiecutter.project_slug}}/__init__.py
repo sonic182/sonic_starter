@@ -20,7 +20,7 @@ def main():
     config = ConfigParser()
     config.add_section('logging')
     config.read(args.config)
-    logger, uuid = get_logger(args, config)
+    logger, uuid = get_logger(config, args.debug, args.verbose)
     logger.info('Starting script...')
 
 

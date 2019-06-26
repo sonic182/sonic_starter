@@ -57,16 +57,17 @@ class Logger(logging.LoggerAdapter):
         return '{}={}; '.format(key, value)
 
 
-def get_logger(args, config, uuid=uuid4().hex, name=__name__):
+def get_logger(config, debug=False, verbose=False, uuid=uuid4().hex,
+               name=__name__):
     """Setup logging."""
     fmt = logging.Formatter(
         '{asctime} - {module}:{lineno} - {levelname} - {uuid} - {msg}',
         style='{')
-    level = logging.DEBUG
+    level = logging.DEBUG if debug else logging.INFO
     logger = logging.getLogger(name)
     logger.setLevel(level)
 
-    if args.verbose:
+    if verbose:
         stream = logging.StreamHandler()
         stream.setLevel(level)
         stream.setFormatter(fmt)
