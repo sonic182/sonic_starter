@@ -2,6 +2,7 @@
 
 import re
 from setuptools import setup
+from setuptools import find_packages
 
 
 RGX = re.compile('([\w-]+==[\d.]+)')
@@ -25,10 +26,7 @@ setup(
     author='{{cookiecutter.author}}',
     author_email='{{cookiecutter.author_email}}',
     license='MIT',
-    packages=[
-        '{{cookiecutter.project_slug}}',
-        '{{cookiecutter.project_slug}}_utils',
-    ],
+    packages=find_packages(),
     setup_requires=['pytest-runner'],
     test_requires=['pytest'],
     install_requires=requirements('./requirements.txt'),
