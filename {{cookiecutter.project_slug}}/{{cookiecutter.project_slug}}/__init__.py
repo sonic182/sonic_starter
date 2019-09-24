@@ -3,7 +3,7 @@
 from argparse import ArgumentParser
 from configparser import ConfigParser
 
-from {{cookiecutter.project_slug}}.utils import get_logger
+from {{cookiecutter.project_slug}}_utils import get_logger
 
 
 def get_arguments():
