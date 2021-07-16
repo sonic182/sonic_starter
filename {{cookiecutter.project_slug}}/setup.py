@@ -1,11 +1,8 @@
 """Setup module."""
 
-import re
 from setuptools import setup
 from setuptools import find_packages
-
-
-RGX = re.compile('([\w-]+==[\d.]+)')
+from pkg_resources import parse_requirements
 
 
 def read_file(filename):
@@ -16,7 +13,7 @@ def read_file(filename):
 
 def requirements(filename):
     """Parse requirements from file."""
-    return re.findall(RGX, read_file(filename)) or []
+    return [str(req) for req in parse_requirements(read_file(filename))]
 
 
 setup(
@@ -28,7 +25,6 @@ setup(
     license='MIT',
     packages=find_packages(),
     setup_requires=['pytest-runner'],
-    test_requires=['pytest'],
     install_requires=requirements('./requirements.txt'),
     extras_require={
         'test': requirements('./test-requirements.txt')
